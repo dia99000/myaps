@@ -6,7 +6,51 @@ $letter: #2b546a;
 body{background: $background; color: $letter;}
 ul {list-style: none;}
 a {text-decoration: none; color: $letter;}
-.header-title {text-align: center; background: $base;}
-.header-title a{color: $background;}
 .flexbox{ display: flex; }
 .container{ padding-left: 10%; padding-right: 10%;}
+.header-title {
+	text-align: center;
+	background: $base;
+	a{color: $background;}
+}
+.form{
+	text-align: center;
+}
+
+// カードに関するレイアウト
+.card-control{
+	height: 50px;
+	display: flex;
+	width: 70%;
+	margin-bottom: 1%;
+	.btn {
+		width: 25%;
+
+		border: dotted 1px red;
+		border-radius: 8%;
+		height: 50px;
+		text-align: center;
+	}
+}
+
+.card{
+	border: solid 2px $base;
+	height: 400px;
+	width: 80%;
+
+	.card-first-low{
+		border-bottom: solid 2px $base;
+		height: 20%;
+		display: flex;
+		.card-title{ width: 80%;}
+		.card-like{width: 18%; border: dotted 1px red; margin: 1%;}
+	}
+
+	.card-tags{
+		border-bottom: solid 2px $base;
+		height: 15%;
+	}
+	.card-content{
+		height: 65%;
+	}
+}

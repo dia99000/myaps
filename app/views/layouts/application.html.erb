@@ -16,16 +16,19 @@
     <div class="header-menus">
       <ul class="flexbox">
         <li><%= link_to "myapsとは", "/about" %></li>|
-        <li><%= link_to "カード一覧", "#" %></li>|
+        <li><%= link_to "カード一覧", cards_path %></li>|
         <li><%= link_to "タグ一覧", "#" %></li>
       </ul>
       <ul class="flexbox">
-        <li><%= link_to "新しいカード", "#" %></li>|
+        <li><%= link_to "新しいカード", new_card_path %></li>|
         <li><%= link_to "新しいタグ", "#" %></li>
       </ul>
     </div>
     <br>
     <div class="container">
+      <% if notice %>
+        <p id="notice"><%= notice %></p>
+      <% end %>
       <%= yield %>
     </div>
   </body>

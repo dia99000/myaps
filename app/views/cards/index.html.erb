@@ -1,0 +1,12 @@
+<div class="contents-header">
+	<h2>カード一覧</h2>
+</div>
+<div class="contents">
+	<ul>
+		<% @cards.each do |card| %>
+			<li>
+				<%= link_to card.title, card_path(card) %>
+			</li>
+		<% end %>
+	</ul>
+</div>

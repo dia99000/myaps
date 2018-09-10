@@ -1,0 +1,20 @@
+<div class="card-control">
+	<div class="btn"><%= link_to "お気に入り", edit_card_path %></div>
+	<div class="btn"><%= link_to "タグ追加", edit_card_path %></div>
+	<div class="btn"><%= link_to "コンテンツ追加", edit_card_path %></div>
+  <div class="btn"><%= link_to 'カード破棄', @card, method: :delete, data: { confirm: '削除しますか？' } %></div>
+</div>
+
+<div class="card">
+	<div class= "card-first-low">
+		<div class="card-title"><%= @card.title %></div>
+		<div class="card-like">Like?</div>
+	</div>
+	<div class="card-tags">
+		Tagsを出力
+	</div>
+	<div class="card-content">
+		Contentsを出力
+	</div>
+</div>
+
