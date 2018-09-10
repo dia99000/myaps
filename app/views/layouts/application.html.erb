@@ -10,6 +10,23 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="header-title">
+      <h1><%= link_to "myaps", "/"%></h1>
+    </div>
+    <div class="header-menus">
+      <ul class="flexbox">
+        <li><%= link_to "myapsとは", "/about" %></li>|
+        <li><%= link_to "カード一覧", "#" %></li>|
+        <li><%= link_to "タグ一覧", "#" %></li>
+      </ul>
+      <ul class="flexbox">
+        <li><%= link_to "新しいカード", "#" %></li>|
+        <li><%= link_to "新しいタグ", "#" %></li>
+      </ul>
+    </div>
+    <br>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

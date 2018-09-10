@@ -1,0 +1,12 @@
+$base: #454545;
+$background: #f9fbfe;
+$accent: red;
+$letter: #2b546a;
+* {margin: auto;}
+body{background: $background; color: $letter;}
+ul {list-style: none;}
+a {text-decoration: none; color: $letter;}
+.header-title {text-align: center; background: $base;}
+.header-title a{color: $background;}
+.flexbox{ display: flex; }
+.container{ padding-left: 10%; padding-right: 10%;}
