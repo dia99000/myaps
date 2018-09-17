@@ -15,25 +15,38 @@
     </div>
     <div class="header-menus">
       <ul class="flexbox">
-        <li><%= link_to "新しいカード", new_card_path %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+          <li><%= link_to "新しいカード", new_card_path %></li>|
+        <% else %>
+          <li><%= link_to "サインアップ", new_user_registration_path %></li>
+          <li><%= link_to "ログイン", new_user_session_path %></li>
+        <% end %>
+      </ul>
+      <ul class="flexbox">
         <li><%= link_to "カード一覧", cards_path %></li>|
         <li><%= link_to "タグ一覧", tags_path %></li>|
         <li><%= link_to "myapsとは", "/about" %></li>|
       </ul>
-      <ul class="flexbox">
-        <li>xxx</li>|
-        <li>xxx</li>|
-        <li>xxx</li>|
-        <li>xxx</li>|
-        <li>xxx</li>
-      </ul>
+    </div>
+    <div class="header-notice">
+      <% if notice %>
+        <p class="notice" id="msg"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert" id="msg"><%= alert %></p>
+      <% end %>
     </div>
     <br>
+    <!--     動作に対するメッセージを表示 -->
     <div class="container">
-      <% if notice %>
-        <p id="notice"><%= notice %></p>
-      <% end %>
       <%= yield %>
     </div>
   </body>
+  <script>
+    $( document ).ready(function() {
+      // メッセージを３秒後にフェードアウトする
+      $('#msg').fadeOut(3000);
+    });
+  </script>
 </html>

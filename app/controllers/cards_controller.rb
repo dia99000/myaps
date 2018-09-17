@@ -2,7 +2,7 @@ class CardsController < ApplicationController
 	before_action :set_card, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@cards = Card.all.by_id.limit(10)
+		@mycards = Card.includes(:user).by_id.limit(10)
 	end
 
 	def new
@@ -46,6 +46,6 @@ class CardsController < ApplicationController
 	end
 
 	def card_params
-		params.require(:card).permit(:title)
+		params.require(:card).permit(:title).merge(user_id: current_user.id)
 	end
 end

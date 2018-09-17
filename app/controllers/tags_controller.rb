@@ -10,9 +10,11 @@ class TagsController < ApplicationController
 		@tag = Tag.new(tag_params)
 		respond_to do |format|
 			if @tag.save
-				format.html{ redirect_to action: :index }
+				@tags = Tag.all
+				format.json{ render json: @tags}
+				# format.html{ redirect_to tags_path, notice: 'Created!' }
 			else
-				format.html{ render new_tag_path }
+				format.html{ render tags_path }
 			end
 		end
 	end

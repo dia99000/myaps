@@ -1,4 +1,5 @@
 //入力フォームを空欄にする処理
 $("#tag-name").val("");
 //メモ一覧を再描画する処理
-$("ul").html("<%= j(render @tags) %>");
+$("#tag-index").html("<%= j(render @tags) %>");
+alert('create呼ばれた！！');

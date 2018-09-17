@@ -1,6 +1,6 @@
 $base: #454545;
 $background: #f9fbfe;
-$accent: red;
+$accent: #243447;
 $letter: #2b546a;
 
 * {margin: auto;}
@@ -54,4 +54,14 @@ a {text-decoration: none; color: $letter;}
 	.card-content{
 		height: 65%;
 	}
+}
+
+.notice{
+	color: white;
+	background: $accent;
+}
+
+.alert{
+	color: white;
+	background: $accent;
 }
