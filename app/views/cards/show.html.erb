@@ -1,20 +1,61 @@
 <div class="card-control">
 	<div class="btn"><%= link_to "お気に入り", edit_card_path %></div>
-	<div class="btn"><%= link_to "タグ追加", edit_card_path %></div>
-	<div class="btn"><%= link_to "コンテンツ追加", edit_card_path %></div>
+	<div class="btn"><p id="add-tag-btn">タグ追加</p></div>
+	<div class="btn"><p id="add-desc-btn">コンテンツ追加</p></div>
   <div class="btn"><%= link_to 'カード破棄', @card, method: :delete, data: { confirm: '削除しますか？' } %></div>
 </div>
 
 <div class="card">
 	<div class= "card-first-low">
+		<!-- カードのタイトルを表示 -->
 		<div class="card-title"><%= @card.title %></div>
+		<!-- カードのステータス(likeかどうか)を表示 -->
 		<div class="card-like">Like?</div>
 	</div>
+	<!-- カードに紐づくタグ一覧を表示 -->
 	<div class="card-tags">
-		Tagsを出力
+		<% @card.tags.each do |tag| %>
+			<span style="padding-right: 1%;">#<%= link_to tag.name, tag_path %></span>
+		<% end %>
+		<!-- カードにタグを追加するフォーム -->
+		<div class="small-form" id="add-tag" style="display:none">
+			<%= form_with(model: @card, method: :patch, local: true) do |f| %>
+				<div class="field">
+					<%= f.text_field :name %>
+					<%= f.submit 'タグを追加', data: { disable_with: '送信中'} %>
+				</div>
+			<% end %>
+		</div>
+		<!-- ここまで -->
 	</div>
+	<!-- カードの内容を表示 -->
 	<div class="card-content">
-		Contentsを出力
+		<!-- カードにタグを追加するフォーム -->
+		<div class="small-form" id="add-desc" style="display:none">
+			<%= form_with(model: [ @card, Description.new], local: true)  do |form| %>
+			  <div class="field">
+			  	<span>・</span>
+			  	<%= form.text_field :content %>
+			    <%= form.submit '追加', data: {disable_with: '送信中'} %>
+			  </div>
+			<% end %>
+		</div>
+		<!-- ここまで -->
+		<ul>
+			<% @card.descriptions.each do |desc| %>
+				<li style="list-style-type: square">
+					<%= desc.content %>
+				</li>
+			<% end %>
+		</ul>
 	</div>
 </div>
 
+<script text="javascript">
+	document.getElementById("add-tag-btn").onclick = () => {
+		document.getElementById("add-tag").style.display = "block";
+	}
+	document.getElementById("add-desc-btn").onclick = () => {
+		document.getElementById("add-desc").style.display = "block";
+	}
+</script>

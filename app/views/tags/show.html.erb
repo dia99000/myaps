@@ -1,0 +1,13 @@
+<div class="contents-header">
+	<h2>#<%= @tag.name %></h2>
+</div>
+<div class="contents">
+	<ul id='card-index'>
+		<% @tag.cards.each do |card| %>
+			<li>
+				<%= link_to card.title, card_path %>
+			</li>
+		<% end %>
+	</ul>
+</div>
+

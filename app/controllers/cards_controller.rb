@@ -9,6 +9,10 @@ class CardsController < ApplicationController
 		@card = Card.new
 	end
 
+	def show
+		@desc = Description.new
+	end
+
 	def create
 		@card = Card.new(card_params)
 		respond_to do |format|
@@ -17,17 +21,18 @@ class CardsController < ApplicationController
 				format.json {render :show, status: :created, location: @card }
 			else
 				format.html {render :new}
-				format.json {render json: @card.erros, status: :unprocessable_entity }
+				format.json {render json: @card.errors, status: :unprocessable_entity }
 			end
 		end
 	end
 
 	def update
+		@tag = Tag.find_by(name: params[:card][:name])
 		respond_to do |format|
 			if @card.update(card_params)
 				format.html {redirect_to @card, notice: 'Updated！'}
 			else
-				format.html {render :edit}
+				format.html {render :show}
 			end
 		end
 	end

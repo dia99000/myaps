@@ -1,4 +1,8 @@
 <li>
 	#<%= link_to tag.name, tag_path(tag) %>
-	<%= link_to '削除', tag_path(tag), method: :delete %>
+	<span>
+		<%= link_to tag_path(tag), method: :delete do %>
+			<i class="fa fa-trash" aria-hidden="true"></i>
+		<% end %>
+	</span>
 </li>

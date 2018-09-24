@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   get '/top' => 'top#home'
   get '/about' => 'top#about'
-  resources :cards
+  resources :cards do
+  	resources :descriptions, only: [:create, :update, :delete]
+  end
+
   resources :tags
 
   root to: 'cards#index'

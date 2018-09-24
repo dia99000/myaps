@@ -6,6 +6,9 @@ class TagsController < ApplicationController
 		@tag = Tag.new
 	end
 
+	def show
+	end
+
 	def create
 		@tag = Tag.new(tag_params)
 		respond_to do |format|

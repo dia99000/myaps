@@ -26,7 +26,7 @@ a {text-decoration: none; color: $letter;}
 	margin-bottom: 1%;
 	.btn {
 		width: 25%;
-
+		cursor: pointer;
 		border: dotted 1px red;
 		border-radius: 8%;
 		height: 50px;
@@ -57,11 +57,13 @@ a {text-decoration: none; color: $letter;}
 }
 
 .notice{
+	text-align: center;
 	color: white;
 	background: $accent;
 }
 
 .alert{
+	text-align: center;
 	color: white;
 	background: $accent;
 }
