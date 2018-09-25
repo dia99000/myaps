@@ -1,16 +1,20 @@
 <!-- タグの追加フォーム -->
 <div class="contents">
 	<div class="form flexbox">
-		<%= form_with(url: tags_path, method: :get, local: true) do |f| %>
+		<%= form_with(url: tags_path, method: :get, local: true) do |form| %>
 			<div class="field">
-				<%= f.text_field :search %>
-				<%= f.submit '検索', data: { disable_with: '検索中'} %>
+				<%= form.text_field :search %>
+				<%= button_tag :type => "submit" do %>
+					<i class="fa fa-search" ></i>
+				<% end %>
 			</div>
 		<% end %>
 		<%= form_for @tag, remote: true do |f| %>
 			<div class="field">
 				<%= f.text_field :name %>
-				<%= f.submit '追加', data: { disable_with: '送信中'} %>
+				<%= button_tag :type => "submit" do %>
+					<i class="fa fa-plus"></i>
+				<% end %>
 			</div>
 		<% end %>
 	</div>

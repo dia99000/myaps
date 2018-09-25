@@ -22,7 +22,9 @@
 			<%= form_with(model: @card, method: :patch, local: true) do |f| %>
 				<div class="field">
 					<%= f.text_field :name %>
-					<%= f.submit 'タグを追加', data: { disable_with: '送信中'} %>
+			   	<%= button_tag :type => "submit" do %>
+						<i class="fa fa-plus" ></i>
+					<% end %>
 				</div>
 			<% end %>
 		</div>
@@ -30,18 +32,21 @@
 	</div>
 	<!-- カードの内容を表示 -->
 	<div class="card-content">
-		<!-- カードにタグを追加するフォーム -->
-		<div class="small-form" id="add-desc" style="display:none">
-			<%= form_with(model: [ @card, Description.new], local: true)  do |form| %>
-			  <div class="field">
-			  	<span>・</span>
-			  	<%= form.text_field :content %>
-			    <%= form.submit '追加', data: {disable_with: '送信中'} %>
-			  </div>
-			<% end %>
-		</div>
 		<!-- ここまで -->
 		<ul>
+			<!-- カードにコンテンツを追加するフォーム -->
+			<li id="add-desc" style="display:none">
+	<!-- 		<div class="small-form" id="add-desc" style="display:none"> -->
+				<%= form_with(model: [ @card, Description.new], local: true)  do |form| %>
+				  <div class="field">
+				  	<%= form.text_field :content %>
+				   	<%= button_tag :type => "submit" do %>
+							<i class="fa fa-plus" ></i>
+						<% end %>
+				  </div>
+				<% end %>
+	<!-- 		</div> -->
+			</li>
 			<% @card.descriptions.each do |desc| %>
 				<li style="list-style-type: square">
 					<%= desc.content %>

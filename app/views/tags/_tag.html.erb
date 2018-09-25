@@ -1,6 +1,6 @@
 <li>
-	#<%= link_to tag.name, tag_path(tag) %>
-	<span>
+	<i class="fa fa-tag"></i><%= link_to tag.name, tag_path(tag) %>
+	<span style="padding-left: 5px;">
 		<%= link_to tag_path(tag), method: :delete do %>
 			<i class="fa fa-trash" aria-hidden="true"></i>
 		<% end %>

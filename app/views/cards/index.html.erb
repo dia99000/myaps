@@ -4,7 +4,7 @@
 <div class="contents">
 	<ul>
 		<% @mycards.each do |card| %>
-			<li>
+			<li class="card-index">
 				<%= link_to card.title, card_path(card) %>
 			</li>
 		<% end %>
