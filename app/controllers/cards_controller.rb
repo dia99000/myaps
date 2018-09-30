@@ -28,6 +28,8 @@ class CardsController < ApplicationController
 
 	def update
 		@tag = Tag.find_by(name: params[:card][:name])
+		puts @tag.name + "caught"
+		CardTag.create(card_id: params[:id], tag_id: @tag.id)
 		respond_to do |format|
 			if @card.update(card_params)
 				format.html {redirect_to @card, notice: 'Updated！'}
@@ -51,6 +53,6 @@ class CardsController < ApplicationController
 	end
 
 	def card_params
-		params.require(:card).permit(:title).merge(user_id: current_user.id)
+		params.require(:card).permit(:title, :tag_id).merge(user_id: current_user.id)
 	end
 end

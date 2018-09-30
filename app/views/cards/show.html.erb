@@ -1,27 +1,27 @@
 <div class="card-control">
-	<div class="btn"><%= link_to "お気に入り", edit_card_path %></div>
-	<div class="btn"><p id="add-tag-btn">タグ追加</p></div>
-	<div class="btn"><p id="add-desc-btn">コンテンツ追加</p></div>
-  <div class="btn"><%= link_to 'カード破棄', @card, method: :delete, data: { confirm: '削除しますか？' } %></div>
+	<div class="btn"><%= link_to edit_card_path do %><i class="fa fa-star"></i>お気に入り<% end %></div>
+	<div class="btn"><p id="add-tag-btn"><i class="fa fa-tag"></i>タグ追加</p></div>
+	<div class="btn"><p id="add-desc-btn"><i class="fa fa-plus" ></i>説明追加</p></div>
+  <div class="btn"><%= link_to @card, method: :delete, data: { confirm: '削除しますか？' } do %><i class="fa fa-trash" ></i>破棄<% end %></div>
 </div>
 
 <div class="card">
 	<div class= "card-first-low">
 		<!-- カードのタイトルを表示 -->
-		<div class="card-title"><%= @card.title %></div>
+		<div class="card-title"><h1><%= @card.title %></h1></div>
 		<!-- カードのステータス(likeかどうか)を表示 -->
 		<div class="card-like">Like?</div>
 	</div>
 	<!-- カードに紐づくタグ一覧を表示 -->
 	<div class="card-tags">
 		<% @card.tags.each do |tag| %>
-			<span style="padding-right: 1%;">#<%= link_to tag.name, tag_path %></span>
+			<span style="padding-right: 1%;"><i class="fa fa-tag"></i><%= link_to tag.name, tag_path(tag) %></span>
 		<% end %>
 		<!-- カードにタグを追加するフォーム -->
 		<div class="small-form" id="add-tag" style="display:none">
 			<%= form_with(model: @card, method: :patch, local: true) do |f| %>
 				<div class="field">
-					<%= f.text_field :name %>
+					<%= f.text_field :name, autofocus: true %>
 			   	<%= button_tag :type => "submit" do %>
 						<i class="fa fa-plus" ></i>
 					<% end %>

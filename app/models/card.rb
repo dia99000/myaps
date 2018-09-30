@@ -8,4 +8,5 @@ class Card < ApplicationRecord
 	validates :title, presence: true
 	#表示
 	scope :by_id, -> { order(updated_at: :desc)}
+	accepts_nested_attributes_for :card_tags, allow_destroy: true
 end

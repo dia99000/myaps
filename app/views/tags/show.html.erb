@@ -1,11 +1,11 @@
 <div class="contents-header">
-	<h2>#<%= @tag.name %></h2>
+	<h2><i class="fa fa-tag"></i><%= @tag.name %> のカード一覧</h2>
 </div>
 <div class="contents">
 	<ul id='card-index'>
 		<% @tag.cards.each do |card| %>
-			<li>
-				<%= link_to card.title, card_path %>
+			<li class="card-index">
+				<%= link_to card.title, card %>
 			</li>
 		<% end %>
 	</ul>
