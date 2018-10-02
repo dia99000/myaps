@@ -1,9 +1,13 @@
 <div class="contents-header">
-	<h2>カード一覧</h2>
+	<h3>検索する</h3>
+</div>
+
+<div class="contents-header">
+	<h3>カード一覧</h3>
 </div>
 <div class="contents">
 	<ul>
-		<% @mycards.each do |card| %>
+		<% @cards.each do |card| %>
 			<li class="card-index">
 				<%= link_to card.title, card_path(card) %>
 			</li>

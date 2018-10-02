@@ -15,7 +15,9 @@
 	<!-- カードに紐づくタグ一覧を表示 -->
 	<div class="card-tags">
 		<% @card.tags.each do |tag| %>
-			<span style="padding-right: 1%;"><i class="fa fa-tag"></i><%= link_to tag.name, tag_path(tag) %></span>
+			<span style="padding-right: 1%;">
+				<%= link_to tag.name, tag_path(tag), :style => "border:solid 1px ##{tag.color.digits};" %>
+			</span>
 		<% end %>
 		<!-- カードにタグを追加するフォーム -->
 		<div class="small-form" id="add-tag" style="display:none">
@@ -39,7 +41,7 @@
 	<!-- 		<div class="small-form" id="add-desc" style="display:none"> -->
 				<%= form_with(model: [ @card, Description.new], local: true)  do |form| %>
 				  <div class="field">
-				  	<%= form.text_field :content %>
+				  	<%= form.text_field :content, autofocus: true %>
 				   	<%= button_tag :type => "submit" do %>
 							<i class="fa fa-plus" ></i>
 						<% end %>

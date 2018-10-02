@@ -1,10 +1,14 @@
 $base: #A3C5F7;
 $base-shadow: #92B4E6;
+$header: #454545;
+$header-shadow: #232323;
 $background: #F9FBFE;
 $accent1: #FFDC9F;
 $accent2: #B3A7F8;
 $letter: #2B546A;
 $white: #FDFDFD;
+$light-gray: #eee;
+$middle-gray: #bbb;
 
 * {
 
@@ -24,12 +28,17 @@ li{
 	padding: 0px 5px;
 }
 a {
-	padding-left: 5px;
+	padding: 1px 5px;
 	text-decoration: none;
 	color: $letter;
 }
 
 h2{
+	text-align: center;
+	padding-bottom: 15px;
+}
+
+h3{
 	text-align: center;
 	padding-bottom: 10px;
 }
@@ -37,19 +46,51 @@ h2{
 	display: flex;
 }
 
+button{
+	background: $header;
+	color: $white;
+	border: none;
+	border-radius: 5px;
+	&:hover{
+		opacity: 0.8;
+	}
+	i{
+		text-align: center;
+	}
+
+
+table, tr, td{
+	border: solid 2px #222;
+}
+}
 header{
 	.header-menus{
 		margin-top: 70px;
 		li{
-			&:hover{
-				border-bottom: 2px solid $accent1;
-			  transition: .5s all;
+			position: relative;
+			// &:hover{
+			// 	border-bottom: 2px solid $accent1;
+			//   transition: .5s all;
+			// }
+			& > a{
+				&:before{
+					width: 0; height: 2px;
+					background: $accent1;
+					content: "";
+					position: absolute;
+					bottom: 0; left: 50%;
+					transform: translateX(-50%);
+					transition: .5s all;
+				}
+				&:hover:before{
+					width: 100%;
+				}
 			}
 		}
 	}
 	.header-title {
-		background: $base;
-		border-bottom: 2px solid $base-shadow;
+		background: $header;
+		border-bottom: 2px solid $header-shadow;
 		margin-bottom: 20px;
 		text-align: center;
 		a{
@@ -100,18 +141,26 @@ header{
 	}
 	.card-first-low{
 		padding: 1% 2%;
-		border-bottom: solid 2px $base;
-		height: 20%;
 		display: flex;
-		.card-title{ width: 80%;}
-		.card-like{width: 18%; border: dotted 1px red; margin: 1%;}
+		.card-title{
+			width: 80%;
+		}
+		.card-like{
+			width: 18%; border: dotted 1px red; margin: 1%;
+		}
 	}
 
 	.card-tags{
 		padding: 1% 2%;
 		padding-left: 10px;
+		padding-bottom: 10px;
 		border-bottom: solid 2px $base;
-		height: 15%;
+		font-size: 70%;
+		a{
+		background: $light-gray;
+		border-radius: 5px;
+		border: solid 1px $middle-gray;
+		}
 	}
 	.card-content{
 		padding: 1% 2%;
@@ -134,10 +183,14 @@ header{
 	a{
 		display: block;
 		height: 50px;
-		padding: 15px;
 	}
 }
 
+.show-index{
+	height: 20px; width: 20px;
+	border: 1px solid $letter;
+	display: block;
+}
 .notice{
 	text-align: center;
 	color: $white;
@@ -149,7 +202,12 @@ header{
 	color: $white;
 	background: $accent1;
 }
-#signout:hover{
-	border-bottom: 3px solid $accent2;
-  transition: .5s all;
+
+.tag-btn{
+	background: $background;
+}
+
+#tag-color{
+	display: inline-block;
+	width: 10%;
 }

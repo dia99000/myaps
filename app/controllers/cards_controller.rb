@@ -2,7 +2,7 @@ class CardsController < ApplicationController
 	before_action :set_card, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@mycards = Card.includes(:user).by_id.limit(10)
+		@cards = Card.includes(:user).search(params[:search]).by_id.limit(10)
 	end
 
 	def new
@@ -28,7 +28,6 @@ class CardsController < ApplicationController
 
 	def update
 		@tag = Tag.find_by(name: params[:card][:name])
-		puts @tag.name + "caught"
 		CardTag.create(card_id: params[:id], tag_id: @tag.id)
 		respond_to do |format|
 			if @card.update(card_params)

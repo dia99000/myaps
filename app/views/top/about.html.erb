@@ -9,3 +9,20 @@
 		<li><%= top.memo %></li>
 	<% end %>
 </ul>
+
+<h2>色の登録</h2>
+<%= form_for @color, local: true do |f| %>
+	<div class="field">
+		<%= f.text_field :hue %>
+		<%= f.text_field :digits %>
+		<%= button_tag :type => "submit" do %>
+			<i class="fa fa-plus"></i>
+		<% end %>
+	</div>
+<% end %>
+
+<h2>色一覧</h2>
+
+<% @colors.each do |color| %>
+	<i class="fa fa-tag" style="color: #<%= color.digits %>"></i>
+<% end %>

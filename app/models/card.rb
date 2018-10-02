@@ -9,4 +9,12 @@ class Card < ApplicationRecord
 	#表示
 	scope :by_id, -> { order(updated_at: :desc)}
 	accepts_nested_attributes_for :card_tags, allow_destroy: true
+	#searchメソッド
+	def self.search(search)
+		if search
+			Card.where(['name LIKE ?', "%#{search}%"])
+		else
+			Card.all
+		end
+	end
 end

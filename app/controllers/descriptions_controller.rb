@@ -10,7 +10,8 @@ class DescriptionsController < ApplicationController
         format.html { redirect_to controller: 'cards', action: 'show', id: @card.id, notice: 'Appended!' }
         format.json { render :show, status: :created, location: @desc }
       else
-        format.html { render "cards/show" }
+        flash.now[:alert] = "Failed to Append!"
+        format.html { render :show }
         format.json { render json: @desc.errors, status: :unprocessable_entity }
       end
     end
