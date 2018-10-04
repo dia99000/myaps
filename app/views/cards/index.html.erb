@@ -8,8 +8,9 @@
 <div class="contents">
 	<ul>
 		<% @cards.each do |card| %>
-			<li class="card-index">
+			<li class="card-index" >
 				<%= link_to card.title, card_path(card) %>
+				<span><%= card.updated_at %></span>
 			</li>
 		<% end %>
 	</ul>
