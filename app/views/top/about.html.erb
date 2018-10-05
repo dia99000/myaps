@@ -1,28 +1,39 @@
-<p>作成期間：9/10 ~ 9/16</p>
-<p>使用言語：Ruby</p>
-<p>使用フレームワーク：Ruby On Rails</p>
-<br>
-<h2>To Doリスト</h2>
-<p style="color: red">..TODO..</p>
-<ul>
-	<% @tops.each do |top| %>
-		<li><%= top.memo %></li>
-	<% end %>
-</ul>
-
-<h2>色の登録</h2>
-<%= form_for @color, local: true do |f| %>
-	<div class="field">
-		<%= f.text_field :hue %>
-		<%= f.text_field :digits %>
-		<%= button_tag :type => "submit" do %>
-			<i class="fa fa-plus"></i>
+<section class="about">
+	<h2>About Myaps</h2>
+	<p>作成期間：9/10 ~ 9/16</p>
+	<p>使用言語：Ruby</p>
+	<p>使用フレームワーク：Ruby On Rails</p>
+</section>
+<section class="about">
+	<h2>To Do / Pending</h2>
+	<ul>
+		<% @tops.each do |top| %>
+			<li><%= top.memo %></li>
 		<% end %>
-	</div>
-<% end %>
+	</ul>
+</section>
 
-<h2>色一覧</h2>
-
-<% @colors.each do |color| %>
-	<i class="fa fa-tag" style="color: #<%= color.digits %>"></i>
-<% end %>
+<section class="about">
+	<h2>Register Color</h2>
+	<%= form_for @color, local: true do |f| %>
+		<div class="field" style="width: 66%;margin: 0 17%;">
+			<%= f.label '角度(hue)' %>
+			<%= f.text_field :hue %>
+			<%= f.label '16進数コード' %>
+			<%= f.text_field :digits %>
+			<%= button_tag :type => "submit" do %>
+				<i class="fa fa-plus"></i>
+			<% end %>
+		</div>
+	<% end %>
+</section>
+<section class="about">
+	<h2>Index</h2>
+	<h3>Statistics</h3>
+	<p>タグ:<%= Tag.count%></p>
+	<p>カード:<%= Card.count%></p>
+	<h3>Color</h3>
+	<% @colors.each do |color| %>
+		<i class="fa fa-tag" style="color: #<%= color.digits %>"></i>
+	<% end %>
+</section>

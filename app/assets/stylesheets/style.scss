@@ -215,3 +215,18 @@ header{
 	display: inline-block;
 	width: 10%;
 }
+
+
+//aboutページ
+.about{
+	margin-bottom: 5px;
+	background: $white;
+	border: 5px solid $header;
+	border-radius: 5px;
+	h2{
+		font-family: fantasy;
+	}
+	p{
+		text-align: center;
+	}
+}
