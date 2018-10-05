@@ -1,11 +1,8 @@
-<div class="form">
-	<%= form_with(model: card, local: true) do |form| %>
-		<div class="field">
-			<%= form.label :タイトル %>
-			<%= form.text_field :title %>
-		</div>
-		<div class="actions">
-			<%= form.submit %>
-		</div>
-	<% end %>
-</div>
+<%= form_with(model: card, local: true) do |form| %>
+	<div class="field">
+		<%= form.text_field :title %>
+		<%= button_tag :type => "submit" do %>
+			<i class="fa fa-plus"></i>
+		<% end %>
+	</div>
+<% end %>

@@ -12,9 +12,10 @@ class Card < ApplicationRecord
 	#searchメソッド
 	def self.search(search)
 		if search
-			Card.where(['name LIKE ?', "%#{search}%"])
+			Card.where(['title LIKE ?', "%#{search}%"])
 		else
 			Card.all
 		end
 	end
+
 end

@@ -1,17 +1,34 @@
 <div class="contents-header">
 	<h3>検索する</h3>
 </div>
+<div class="form flexbox">
+	<%= form_with(url: cards_path, method: :get, local: true) do |form| %>
+		<div class="field">
+			<%= form.text_field :search %>
+			<%= button_tag :type => "submit" do %>
+				<i class="fa fa-search"></i>
+			<% end %>
+		</div>
+	<% end %>
+	<%= render 'card-form', card: @card %>
+</div>
 
 <div class="contents-header">
-	<h3>カード一覧</h3>
+	<h3>最近追加されたカード一覧</h3>
 </div>
 <div class="contents">
 	<ul>
 		<% @cards.each do |card| %>
 			<li class="card-index" >
-				<%= link_to card.title, card_path(card) %>
-				<span><%= card.updated_at %></span>
+				<%= link_to card_path(card) do %>
+					<%= card.title %><span><%= show_date(card) %></span>
+				<% end %>
 			</li>
 		<% end %>
 	</ul>
+</div>
+
+<section>
+<div class="hoge">
+</section>
 </div>

@@ -9,7 +9,7 @@
 				<% end %>
 			</div>
 		<% end %>
-		<%= form_for @tag, local: true do |f| %>
+		<%= form_with(model: @tag, local: true) do |f| %>
 			<div class="field">
 				<%= f.text_field :name %>
 				<%= button_tag :type => "submit" do %>
