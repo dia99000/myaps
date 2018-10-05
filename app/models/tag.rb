@@ -14,4 +14,6 @@ class Tag < ApplicationRecord
 			Tag.all
 		end
 	end
+	#delegates
+	delegate :digits, to: :color, prefix: :color, allow_nil: true
 end

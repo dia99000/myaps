@@ -1,6 +1,7 @@
-<!-- タグの追加フォーム -->
+
 <div class="contents">
 	<div class="form flexbox">
+		<!-- タグの検索フォーム -->
 		<%= form_with(url: tags_path, method: :get, local: true) do |form| %>
 			<div class="field">
 				<%= form.text_field :search %>
@@ -9,6 +10,7 @@
 				<% end %>
 			</div>
 		<% end %>
+		<!-- タグの追加フォーム -->
 		<%= form_with(model: @tag, local: true) do |f| %>
 			<div class="field">
 				<%= f.text_field :name %>
