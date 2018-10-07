@@ -6,11 +6,6 @@
 </section>
 <section class="about">
 	<h2>To Do / Pending</h2>
-	<ul>
-		<% @tops.each do |top| %>
-			<li><%= top.memo %></li>
-		<% end %>
-	</ul>
 </section>
 
 <section class="about">
@@ -32,7 +27,7 @@
 	<h3>Statistics</h3>
 	<p>タグ:<%= Tag.count%></p>
 	<p>カード:<%= Card.count%></p>
-	<h3>Color</h3>
+	<h3>Colors</h3>
 	<% @colors.each do |color| %>
 		<i class="fa fa-tag" style="color: #<%= color.digits %>"></i>
 	<% end %>

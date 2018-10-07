@@ -1,68 +1,73 @@
 $base: #A3C5F7;
 $base-shadow: #92B4E6;
+$letter: #2B546A;
 $header: #454545;
 $header-shadow: #232323;
 $background: #F9FBFE;
 $accent1: #FFDC9F;
 $accent2: #B3A7F8;
-$letter: #2B546A;
 $white: #FDFDFD;
-$light-gray: #eee;
-$middle-gray: #bbb;
+$white-shadow: #ECECEC;
+$gray-lighter: #D6D5D5;
+$gray-middle: #AAA9A9;
+$gray-darker: #797979;
 
 * {
-
 	margin: auto;
 }
+
 i{
 	padding-right: 5px;
 }
+
 body{
 	background: $background;
 	color: $letter;
 }
-ul {
+
+ul{
   list-style: none;
 }
+
 li{
 	padding: 0px 5px;
 }
+
 a {
+	color: $letter;
 	padding: 1px 5px;
 	text-decoration: none;
-	color: $letter;
 }
 
 h2{
-	text-align: center;
 	padding-bottom: 15px;
+	text-align: center;
 }
 
 h3{
+	padding: 10px 0px;
 	text-align: center;
-	padding-bottom: 10px;
 }
+
 .flexbox{
 	display: flex;
 }
 
 button{
 	background: $header;
-	color: $white;
 	border: none;
 	border-radius: 5px;
+	color: $white;
 	&:hover{
 		opacity: 0.8;
 	}
 	i{
 		text-align: center;
 	}
+}
 
 
-table, tr, td{
-	border: solid 2px #222;
-}
-}
+
 header{
 	.header-menus{
 		margin-top: 70px;
@@ -74,13 +79,13 @@ header{
 			// }
 			& > a{
 				&:before{
-					width: 0; height: 2px;
-					background: $accent1;
+					background: $header;
+					bottom: 0; left: 50%;
 					content: "";
 					position: absolute;
-					bottom: 0; left: 50%;
 					transform: translateX(-50%);
-					transition: .5s all;
+					transition: .3s all;
+					width: 0; height: 2px;
 				}
 				&:hover:before{
 					width: 100%;
@@ -92,12 +97,12 @@ header{
 		background: $header;
 		border-bottom: 2px solid $header-shadow;
 		margin-bottom: 20px;
+	  position: fixed; /* ヘッダーを固定(これが重要) */
+  	top: 0; left: 0; right: 0;  /* 固定する位置 */
 		text-align: center;
 		a{
 			color: $background;
 		}
-	  position: fixed; /* ヘッダーを固定(これが重要) */
-  	top: 0; left: 0; right: 0;  /* 固定する位置 */
 	}
 }
 
@@ -111,15 +116,13 @@ header{
 
 // カードに関するレイアウト
 .card-control{
-	height: 50px;
 	display: flex;
-	width: 70%;
+	height: 50px;	width: 70%;
 	margin-bottom: 1%;
 	.btn {
-		width: 25%;
-		cursor: pointer;
 		border-radius: 8%;
-		height: 20px;
+		cursor: pointer;
+		height: 20px; width: 25%;
 		text-align: center;
 		&:hover{
 			border-bottom: 2px solid $accent2;
@@ -131,8 +134,7 @@ header{
 .card{
 	border: solid 2px $base;
 	background: $white;
-	height: 400px;
-	width: 80%;
+	height: 400px; width: 80%;
 	.card-title{
 		padding: 1% 2%;
 		h1{
@@ -140,8 +142,8 @@ header{
 		}
 	}
 	.card-first-low{
-		padding: 1% 2%;
 		display: flex;
+		padding: 1% 2%;
 		.card-title{
 			width: 80%;
 		}
@@ -151,34 +153,34 @@ header{
 	}
 
 	.card-tags{
+		border-bottom: solid 2px $base;
+		font-size: 70%;
 		padding: 1% 2%;
 		padding-left: 10px;
 		padding-bottom: 10px;
-		border-bottom: solid 2px $base;
-		font-size: 70%;
 		a{
-		background: $light-gray;
+		background: $gray-lighter;
 		border-radius: 5px;
-		border: solid 1px $middle-gray;
+		border: solid 1px $gray-middle;
 		}
 	}
 	.card-content{
-		padding: 1% 2%;
 		height: 65%;
+		padding: 1% 2%;
 		li{
-			padding-right: 1%;
 			margin-bottom: 1%;
+			padding-right: 1%;
 		}
 	}
 }
 .card-index{
-	border: medium solid #eeeeee;
 	background: $white;
+	border: 0.8px solid $white-shadow;
+	border-bottom: 2px solid $white-shadow;
 	margin-bottom: 1%;
 	padding-left: 1%;
 	text-align: left;
 	width: 50%;
-	border-bottom: 2px solid #ececec;
 	a{
 		display: block;
 	}
@@ -186,23 +188,26 @@ header{
 		display: block;
 		font-size: 65%;
 	}
+	&:hover{
+	background: $white-shadow;
+	}
 }
 
 .show-index{
-	height: 20px; width: 20px;
 	border: 1px solid $letter;
 	display: block;
+	height: 20px; width: 20px;
 }
 .notice{
-	text-align: center;
-	color: $white;
 	background: $accent1;
+	color: $white;
+	text-align: center;
 }
 
 .alert{
-	text-align: center;
-	color: $white;
 	background: $accent1;
+	color: $white;
+	text-align: center;
 }
 
 .tag-btn{
@@ -217,10 +222,10 @@ header{
 
 //aboutページ
 .about{
-	margin-bottom: 5px;
 	background: $white;
 	border: 5px solid $header;
 	border-radius: 5px;
+	margin-bottom: 5px;
 	h2{
 		font-family: fantasy;
 	}

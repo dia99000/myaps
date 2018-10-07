@@ -1,0 +1,10 @@
+<li class="card-index">
+	<%= link_to card_path(card) do %>
+		<%= card.title %>
+		<span>
+			<i class="fa fa-calendar"></i><%= show_updated_at(card) %>
+			<i class="fa fa-refresh"></i><%= show_created_at(card) %>
+		</span>
+
+	<% end %>
+</li>

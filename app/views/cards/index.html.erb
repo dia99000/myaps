@@ -3,7 +3,7 @@
 <div class="form flexbox">
 	<%= form_with(url: cards_path, method: :get, local: true) do |form| %>
 		<div class="field">
-			<%= form.text_field :search %>
+			<%= form.text_field :search, :placeholder => "カードを検索..." %>
 			<%= button_tag :type => "submit" do %>
 				<i class="fa fa-search"></i>
 			<% end %>
@@ -18,11 +18,7 @@
 <div class="contents">
 	<ul>
 		<% @cards.each do |card| %>
-			<li class="card-index" >
-				<%= link_to card_path(card) do %>
-					<%= card.title %><span><i class="fa fa-calendar"></i><%= show_updated_at(card) %></span>
-				<% end %>
-			</li>
+			<%= render 'common/card', card: card %>
 		<% end %>
 	</ul>
 </div>
