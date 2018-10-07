@@ -1,5 +1,4 @@
 <div class="contents-header">
-	<h3>検索する</h3>
 </div>
 <div class="form flexbox">
 	<%= form_with(url: cards_path, method: :get, local: true) do |form| %>
@@ -21,14 +20,9 @@
 		<% @cards.each do |card| %>
 			<li class="card-index" >
 				<%= link_to card_path(card) do %>
-					<%= card.title %><span><%= show_date(card) %></span>
+					<%= card.title %><span><i class="fa fa-calendar"></i><%= show_updated_at(card) %></span>
 				<% end %>
 			</li>
 		<% end %>
 	</ul>
-</div>
-
-<section>
-<div class="hoge">
-</section>
 </div>
