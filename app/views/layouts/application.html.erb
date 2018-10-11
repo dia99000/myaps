@@ -14,38 +14,48 @@
       <div class="header-title">
         <h1><%= link_to "myaps", "/"%></h1>
       </div>
-      <div class="header-menus">
+      <nav class="header-menus">
         <ul class="flexbox">
           <% if user_signed_in? %>
             <li id="signout">
               <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>ログアウト
+                <i class="fa fa-sign-out"></i>Signout
               <% end %>
             </li>|
             <li>
               <%= link_to new_card_path do %>
-                <i class="fa fa-plus" ></i>新しいカード
+                <i class="fa fa-plus" ></i>Create
               <% end %>
             </li>|
           <% else %>
             <li>
-              <%= link_to "サインアップ", new_user_registration_path %>
+              <%= link_to new_user_registration_path do %>
+                Signup
+              <% end %>
             </li>
             <li>
-              <i class="fa fa-sign-in"></i><%= link_to "ログイン", new_user_session_path %>
+              <%= link_to new_user_session_path do %>
+                <i class="fa fa-sign-in"></i>Signin
+              <% end %>
             </li>
           <% end %>
           <li>
-            <i class="fa fa-file"></i><%= link_to "カード一覧", cards_path %>
+            <%= link_to cards_path do %>
+              <i class="fa fa-file"></i>Cards
+            <% end %>
           </li>|
           <li>
-            <i class="fa fa-tag" ></i><%= link_to "タグ一覧", tags_path %>
+            <%= link_to tags_path do %>
+              <i class="fa fa-tag"></i>Tags
+            <% end %>
           </li>|
           <li>
-            <i class="fa fa-university" ></i><%= link_to "myapsとは", "/about" %>
-            </li>
+            <%= link_to "/about" do %>
+              <i class="fa fa-university"></i>About
+              <% end %>
+          </li>
         </ul>
-      </div>
+      </nav>
     </header>
     <div class="header-notice">
       <% if notice %>
@@ -60,11 +70,14 @@
     <div class="container">
       <%= yield %>
     </div>
+    <footer>
+      ©2018 Taruya
+    </footer>
   </body>
   <script>
     $( document ).ready(function() {
       // メッセージを３秒後にフェードアウトする
-      $('#msg').fadeOut(3000);
+      $('#msg').fadeOut(5000);
     });
   </script>
 </html>

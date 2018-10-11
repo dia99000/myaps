@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get '/about' => 'top#about'
   resources :colors, only: :create
   resources :cards do
-  	resources :descriptions, only: [:create, :update, :delete]
+  	resources :descriptions, only: [:create, :update, :destroy]
+    post 'add' => 'cardfavs#create'
+    delete '/add' => 'cardfavs#destroy'
   end
   resources :tags
 

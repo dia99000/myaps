@@ -2,8 +2,10 @@ class CardsController < ApplicationController
 	before_action :set_card, only: [:show, :edit, :update, :destroy]
 	before_action :set_new_card, only: [:index, :new]
 
+	PER = 10
+
 	def index
-		@cards = Card.includes(:user).search(params[:search]).by_id.limit(10)
+		@cards = Card.includes(:user).search(params[:search]).by_id.page(params[:page]).per(PER)
 	end
 
 	def new

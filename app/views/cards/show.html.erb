@@ -1,8 +1,22 @@
 <div class="card-control">
-	<div class="btn"><%= link_to edit_card_path do %><i class="fa fa-star"></i>お気に入り<% end %></div>
-	<div class="btn"><p id="add-tag-btn"><i class="fa fa-tag"></i>タグ追加</p></div>
-	<div class="btn"><p id="add-desc-btn"><i class="fa fa-plus" ></i>説明追加</p></div>
-  <div class="btn"><%= link_to @card, method: :delete, data: { confirm: '削除しますか？' } do %><i class="fa fa-trash" ></i>破棄<% end %></div>
+	<ul class="flexbox">
+		<li>
+			<%= link_to edit_card_path do %>
+				<i class="fa fa-star"></i>Fav
+			<% end %>
+		</li>
+		<li id="add-tag-btn">
+			<i class="fa fa-tag"></i>Tag
+		</li>
+		<li id="add-desc-btn">
+			<i class="fa fa-plus"></i>Tips
+		</li>
+		<li>
+			<%= link_to @card, method: :delete, data:{confirm: '削除しますか？'} do %>
+				<i class="fa fa-trash"></i>Delete
+			<% end %>
+		</li>
+	</ul>
 </div>
 
 <div class="card">
@@ -10,10 +24,25 @@
 		<!-- カードのタイトルを表示 -->
 		<div class="card-title"><h1><%= @card.title %></h1></div>
 		<!-- カードのステータス(likeかどうか)を表示 -->
-		<div class="card-like">Like?</div>
+		<div class="card-fav">
+			<% if !Cardfav.exists?(user_id: current_user.id, card_id: @card.id) %>
+				<%= form_with(url: card_add_path(@card), method: :post, local: true) do |f| %>
+			   	<%= button_tag :type => "submit" do %>
+						<h1><i class="fa fa-bookmark-o"></i></h1>
+					<% end %>
+				<% end %>
+			<% else %>
+				<%= form_with(url: card_add_path(@card), method: :delete, local: true) do |f| %>
+			   	<%= button_tag :type => "submit" do %>
+						<h1><i class="fa fa-bookmark"></i></h1>
+					<% end %>
+				<% end %>
+			<% end %>
+		</div>
 	</div>
 	<!-- カードに紐づくタグ一覧を表示 -->
 	<div class="card-tags">
+		<i class="fa fa-tags"></i>
 		<% @card.tags.each do |tag| %>
 			<span style="padding-right: 1%;">
 				<%= link_to tag.name, tag_path(tag), :style => "border:solid 1px ##{tag.color.digits};" %>
@@ -38,7 +67,6 @@
 		<ul>
 			<!-- カードにコンテンツを追加するフォーム -->
 			<li id="add-desc" style="display:none">
-	<!-- 		<div class="small-form" id="add-desc" style="display:none"> -->
 				<%= form_with(model: [ @card, Description.new], local: true)  do |form| %>
 				  <div class="field">
 				  	<%= form.text_field :content, autofocus: true %>
@@ -47,7 +75,6 @@
 						<% end %>
 				  </div>
 				<% end %>
-	<!-- 		</div> -->
 			</li>
 			<% @card.descriptions.each do |desc| %>
 				<li style="list-style-type: square">

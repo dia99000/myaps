@@ -1,0 +1,2 @@
+module CardfavsHelper
+end

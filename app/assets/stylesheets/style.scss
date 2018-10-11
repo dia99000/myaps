@@ -6,6 +6,7 @@ $header-shadow: #232323;
 $background: #F9FBFE;
 $accent1: #FFDC9F;
 $accent2: #B3A7F8;
+$card: #B4C5DE;
 $white: #FDFDFD;
 $white-shadow: #ECECEC;
 $gray-lighter: #D6D5D5;
@@ -38,7 +39,9 @@ a {
 	padding: 1px 5px;
 	text-decoration: none;
 }
-
+h1{
+	color: $header;
+}
 h2{
 	padding-bottom: 15px;
 	text-align: center;
@@ -69,14 +72,22 @@ button{
 
 
 header{
+	.header-title {
+		background: $header;
+		border-bottom: 2px solid $header-shadow;
+	  position: fixed; /* ヘッダーを固定(これが重要) */
+  	top: 0; left: 0; right: 0;  /* 固定する位置 */
+		text-align: center;
+		z-index: 999;
+		a{
+			color: $background;
+		}
+	}
 	.header-menus{
+		//固定されたヘッダーとの齟齬を測る
 		margin-top: 70px;
 		li{
 			position: relative;
-			// &:hover{
-			// 	border-bottom: 2px solid $accent1;
-			//   transition: .5s all;
-			// }
 			& > a{
 				&:before{
 					background: $header;
@@ -93,17 +104,15 @@ header{
 			}
 		}
 	}
-	.header-title {
-		background: $header;
-		border-bottom: 2px solid $header-shadow;
-		margin-bottom: 20px;
-	  position: fixed; /* ヘッダーを固定(これが重要) */
-  	top: 0; left: 0; right: 0;  /* 固定する位置 */
-		text-align: center;
-		a{
-			color: $background;
-		}
-	}
+}
+
+footer{
+	background: $header;
+	color: $white;
+	margin-top: 20px;
+	padding: 10px 0px;
+	text-align: center;
+	z-index: 999;
 }
 
 .container{
@@ -116,14 +125,10 @@ header{
 
 // カードに関するレイアウト
 .card-control{
-	display: flex;
-	height: 50px;	width: 70%;
-	margin-bottom: 1%;
-	.btn {
+	width: 70%;
+	li {
 		border-radius: 8%;
 		cursor: pointer;
-		height: 20px; width: 25%;
-		text-align: center;
 		&:hover{
 			border-bottom: 2px solid $accent2;
 		  transition: .1s all;
@@ -132,10 +137,14 @@ header{
 }
 
 .card{
-	border: solid 2px $base;
+	border: 5px solid $header;
+	border-radius: 5px;
+	filter: drop-shadow(0px 2px 3px rgba(0,0,0,0.6));
 	background: $white;
 	height: 400px; width: 80%;
+	padding: 10px 10px;
 	.card-title{
+		background: gray-lighter;
 		padding: 1% 2%;
 		h1{
 			font-size: 24px;
@@ -143,23 +152,37 @@ header{
 	}
 	.card-first-low{
 		display: flex;
-		padding: 1% 2%;
 		.card-title{
 			width: 80%;
 		}
-		.card-like{
-			width: 18%; border: dotted 1px red; margin: 1%;
+		.card-fav{
+			width: 18%;
+			form{
+				width: 100%; height: 100%;
+				button{
+					width: 100%; height: 100%;
+					display: inline-block;
+					text-align: center;
+					vertical-align: center;
+				}
+			}
+		}
+		button{
+			color: $letter;
+			background: $white;
+			cursor: pointer;
 		}
 	}
 
 	.card-tags{
-		border-bottom: solid 2px $base;
+		filter: drop-shadow(0px 0.2px 1px rgba(0,0,0,0.6));
+		border-bottom: solid 1px $gray-lighter;
 		font-size: 70%;
 		padding: 1% 2%;
 		padding-left: 10px;
 		padding-bottom: 10px;
 		a{
-		background: $gray-lighter;
+		background: $white;
 		border-radius: 5px;
 		border: solid 1px $gray-middle;
 		}
@@ -174,23 +197,37 @@ header{
 	}
 }
 .card-index{
+	display: block;
+	border: 5px solid $header;
+	border-radius: 5px;
+	filter: drop-shadow(0px 0.5px 0.5px rgba(69,69,69,0.6));
 	background: $white;
-	border: 0.8px solid $white-shadow;
-	border-bottom: 2px solid $white-shadow;
-	margin-bottom: 1%;
-	padding-left: 1%;
-	text-align: left;
-	width: 50%;
-	a{
-		display: block;
-	}
-	span{
-		display: block;
-		font-size: 65%;
-	}
+	margin-bottom: 3%;
+	padding: 1%;
+
+	width: 70%;
 	&:hover{
-	background: $white-shadow;
+		background: #efefef;
+		border: solid 7px $header;
+		filter: drop-shadow(0px 2px 2px rgba(0,0,0,0.6));
 	}
+	h3{
+		padding: 1% 2%;
+		text-align: left;
+	}
+	.tags{
+		font-size: 70%;
+		padding: 2%;
+		a{
+			border-radius: 5px;
+		}
+	}
+	.dates{
+		padding: 0% 2%;
+		color: $gray-lighter;
+		font-size: 70%;
+	}
+
 }
 
 .show-index{

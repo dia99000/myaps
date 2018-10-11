@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_02_101122) do
+ActiveRecord::Schema.define(version: 2018_10_11_052946) do
 
   create_table "card_tags", options: "ENGINE=MyISAM DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "card_id"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 2018_10_02_101122) do
     t.datetime "updated_at", null: false
     t.index ["card_id"], name: "index_card_tags_on_card_id"
     t.index ["tag_id"], name: "index_card_tags_on_tag_id"
+  end
+
+  create_table "cardfavs", options: "ENGINE=MyISAM DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "card_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_cardfavs_on_card_id"
+    t.index ["user_id"], name: "index_cardfavs_on_user_id"
   end
 
   create_table "cards", options: "ENGINE=MyISAM DEFAULT CHARSET=utf8", force: :cascade do |t|

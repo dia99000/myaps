@@ -4,6 +4,7 @@ class Card < ApplicationRecord
 	has_many :descriptions
   has_many :card_tags, dependent: :destroy
   has_many :tags, through: :card_tags
+  has_many :cardfavs
 	#バリデーション
 	validates :title, presence: true
 	#表示
