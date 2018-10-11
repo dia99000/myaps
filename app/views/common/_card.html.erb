@@ -1,13 +1,13 @@
-	<%= link_to card_path(card), :class => "card-index" do %>
-				<h3><%= card.title %></h3>
-		<div class="tags">
-			<i class="fa fa-tags"></i>
-			<% card.tags.each do |tag| %>
-				<object><%= link_to tag.name, tag_path(tag), :style => "border:solid 1px ##{tag.color.digits};" %></object>
-			<% end %>
-		</div>
-		<div class="dates">
-			<object><i class="fa fa-calendar"></i><%= show_updated_at(card) %></object>
-			<object><i class="fa fa-refresh"></i><%= show_created_at(card) %></object>
-		</div>
-	<% end %>
+<%= link_to card_path(card), :class => "card-index" do %>
+			<h3><%= card.title %></h3>
+	<div class="tags">
+		<i class="fa fa-tags"></i>
+		<% card.tags.each do |tag| %>
+			<object><%= link_to tag.name, tag_path(tag), :style => "border:solid 1px ##{tag.color.digits};" %></object>
+		<% end %>
+	</div>
+	<div class="dates">
+		<object><i class="fa fa-calendar"></i><%= show_updated_at(card) %></object>
+		<object><i class="fa fa-refresh"></i><%= show_created_at(card) %></object>
+	</div>
+<% end %>

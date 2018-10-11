@@ -30,12 +30,6 @@ class CardsController < ApplicationController
 
 	def update
 		@tag = Tag.find_or_create_by(name: params[:card][:name])
-		# if Tag.find_by(name: params[:card][:name])
-		# 	@tag = Tag.find_by(name: params[:card][:name])
-		# else
-		# 	@tag = Tag.create(name: params[:card][:name])
-		# end
-
 		CardTag.create(card_id: params[:id], tag_id: @tag.id)
 		respond_to do |format|
 			if @card.update(card_params)
@@ -54,7 +48,6 @@ class CardsController < ApplicationController
 	end
 
 	private
-
 	def set_card
 		@card = Card.find(params[:id])
 	end
