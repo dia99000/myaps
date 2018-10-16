@@ -40,6 +40,11 @@
             </li>
           <% end %>
           <li>
+            <%= link_to todos_path do %>
+              <i class="fa fa-list-ul"></i>Todos
+            <% end %>
+          </li>|
+          <li>
             <%= link_to cards_path do %>
               <i class="fa fa-file"></i>Cards
             <% end %>
@@ -70,9 +75,9 @@
     <div class="container">
       <%= yield %>
     </div>
-    <footer>
+<!--     <footer>
       ©2018 Taruya
-    </footer>
+    </footer> -->
   </body>
   <script>
     $( document ).ready(function() {

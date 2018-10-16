@@ -121,6 +121,17 @@ footer{
 	text-align: center;
 }
 
+.todos-index{
+	li{
+		background: $white;
+		border-radius: 1px;
+		cursor: pointer;
+		border: 2px solid $gray-lighter;
+		margin-bottom: 1%;
+		padding: 1%;
+
+	}
+}
 // カードに関するレイアウト
 .card-control{
 	width: 70%;
@@ -198,7 +209,7 @@ footer{
 	display: block;
 	border: 5px solid $header;
 	border-radius: 5px;
-	filter: drop-shadow(0px 0.5px 0.5px rgba(69,69,69,0.6));
+	filter: drop-shadow(0px 1px 1px rgba(69,69,69,0.6));
 	background: $white;
 	margin-bottom: 3%;
 	padding: 1%;

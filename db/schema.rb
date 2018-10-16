@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_11_052946) do
+ActiveRecord::Schema.define(version: 2018_10_15_201631) do
 
   create_table "card_tags", options: "ENGINE=MyISAM DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "card_id"
@@ -55,6 +55,14 @@ ActiveRecord::Schema.define(version: 2018_10_11_052946) do
   create_table "tags", options: "ENGINE=MyISAM DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.integer "color_id", default: 55
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "todos", options: "ENGINE=MyISAM DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.boolean "carded", default: false, null: false
+    t.boolean "done", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

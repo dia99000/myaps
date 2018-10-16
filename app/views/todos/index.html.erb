@@ -1,0 +1,23 @@
+<div class="form flexbox">
+	<%= form_with(model: @todo, local: true) do |f| %>
+		<div class="field">
+			<%= f.text_field :name, :placeholder => "TODOを追加.." %>
+			<%= button_tag :type => "submit" do %>
+				<i class="fa fa-plus"></i>
+			<% end %>
+		</div>
+	<% end %>
+</div>
+<div class="contents-header">
+	<h3><i class="fa fa-list-ul"></i>TODO一覧</h3>
+</div>
+<div class="contents todos-index">
+	<ul>
+		<% @todos.each do |todo| %>
+			<li>
+				<object><%= updated_at(todo) %></object>
+				<%= todo.name %>
+			</li>
+		<% end %>
+	</ul>
+</div>
